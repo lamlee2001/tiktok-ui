@@ -9,7 +9,7 @@ import {
     faEarthAsia,
     faCircleQuestion,
     faKeyboard,
-    faCloudUpload,
+    faUpload,
     faUser,
     faCoins,
     faGear,
@@ -25,6 +25,8 @@ import images from '~/assets/images';
 import AccountItem from '~/components/AccountItem';
 import Menu from '~/components/Popper/Menu';
 import 'tippy.js/dist/tippy.css';
+import { MessageIcon, InboxIcon } from '~/components/Icons';
+import Image from '~/components/Image/index';
 
 const cx = className.bind(styles);
 
@@ -138,8 +140,21 @@ function Header() {
                     {currentUser ? (
                         <>
                             <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
+                                <div className={cx('action-btn')}>
+                                    <Button text>
+                                        <FontAwesomeIcon className={cx('upload-icon')} icon={faUpload} />
+                                        Upload
+                                    </Button>
+                                </div>
+                            </Tippy>
+                            <Tippy delay={[0, 50]} content="Message" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                    <MessageIcon />
+                                </button>
+                            </Tippy>
+                            <Tippy delay={[0, 50]} content="Inbox" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <InboxIcon />
                                 </button>
                             </Tippy>
                         </>
@@ -151,10 +166,11 @@ function Header() {
                     )}
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
-                                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/d5d7b58b1a7f01f757e6639d0f9aeb83~c5_100x100.jpeg?x-expires=1656486000&x-signature=6pkUceriPqxGuzrQRp8NoOuMF60%3D"
-                                alt="Nguyen van a"
+                                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/406b30e60eaa09408c4febcbabfb3226~c5_100x100.jpeg?x-expires=1656572400&x-signature=g7n236x5ysevZO%2F7jTH3L7kyjJw%3D"
+                                alt="Lê Quang Bảo hehe"
+                                fallback=""
                             />
                         ) : (
                             <button className={cx('more-btn')}>
